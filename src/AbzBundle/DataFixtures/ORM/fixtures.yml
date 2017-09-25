@@ -3,4 +3,5 @@ AbzBundle\Entity\Employee:
     full_name: <name()>
     position: <sentence(3)>
     salary: <numberBetween(1000, 10000)>
+    start_date: <dateTimeBetween('2000-01-01', 'now')>
     boss_id: <numberBetween(1000, 10000)>

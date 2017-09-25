@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 class CompanyController extends Controller
 {
     /**
+     * Shows all employees in table with pagination
+     *
      * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)

@@ -33,6 +33,11 @@ class Employee
     private $salary;
 
     /**
+     * @ORM\Column(type="date")
+     */
+    private $start_date;
+
+    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $boss_id;
@@ -72,6 +77,15 @@ class Employee
     /**
      * @return mixed
      */
+    public function getStartDate()
+    {
+        return $this->start_date;
+    }
+
+
+    /**
+     * @return mixed
+     */
     public function getBossId()
     {
         return $this->boss_id;
@@ -99,6 +113,14 @@ class Employee
     public function setSalary($salary)
     {
         $this->salary = $salary;
+    }
+
+    /**
+     * @param mixed $start_date
+     */
+    public function setStartDate($start_date)
+    {
+        $this->start_date = $start_date;
     }
 
     /**
