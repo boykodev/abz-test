@@ -14,13 +14,11 @@ class CompanyController extends Controller
     public function indexAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $employees = $em->getRepository('AbzBundle:Employee')->findAll();
+        $query = $em->getRepository('AbzBundle:Employee')->getAllQuery();
 
-        // TODO paginate query, not result
         $paginator = $this->get('knp_paginator');
         $employees = $paginator->paginate(
-            $employees,
-            $request->query->getInt('page', 1)
+            $query, $request->query->getInt('page', 1)
         );
 
         return $this->render('company/index.html.twig', [
@@ -35,14 +33,11 @@ class CompanyController extends Controller
      */
     public function bossAction($id, Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $employees = $em->getRepository('AbzBundle:Employee')
-            ->findBy(['boss_id' => $id]);
+        $query = $em->getRepository('AbzBundle:Employee')->getAllByBossQuery($id);
 
-        // TODO paginate query, not result
         $paginator = $this->get('knp_paginator');
         $employees = $paginator->paginate(
-            $employees,
-            $request->query->getInt('page', 1)
+            $query, $request->query->getInt('page', 1)
         );
 
         return $this->render('company/index.html.twig', [

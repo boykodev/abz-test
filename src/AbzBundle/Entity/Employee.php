@@ -5,7 +5,7 @@ namespace AbzBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AbzBundle\Repository\EmployeeRepository")
  * @ORM\Table(name="employee")
  */
 class Employee

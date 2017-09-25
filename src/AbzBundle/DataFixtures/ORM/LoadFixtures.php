@@ -11,12 +11,18 @@ class LoadFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $loader = new NativeLoader();
-        $objectSet = $loader->loadFile(__DIR__.'/fixtures.yml');
 
-        foreach ($objectSet->getObjects() as $obj) {
-            $manager->persist($obj);
+        // fixtures > 1000 generation is very slow, hack to get 50k
+        for ($i = 1; $i <= 50; $i++) {
+            $objectSet = $loader->loadFile(__DIR__.'/fixtures.yml');
+
+            foreach ($objectSet->getObjects() as $obj) {
+                $manager->persist($obj);
+            }
+            echo $i * 1000 . " entries generated.\n";
+            $manager->flush();
+            $manager->clear();
         }
 
-        $manager->flush();
     }
 }
