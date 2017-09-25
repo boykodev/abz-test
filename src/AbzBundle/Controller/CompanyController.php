@@ -13,7 +13,26 @@ class CompanyController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('company/index.html.twig');
+        $em = $this->getDoctrine()->getManager();
+        $employees = $em->getRepository('AbzBundle:Employee')->findAll();
+
+        return $this->render('company/index.html.twig', [
+            'employees' => $employees
+        ]);
+    }
+
+    /**
+     * Show all employees of the particular boss
+     *
+     * @Route("/boss/{id}", name="boss", requirements={"id": "\d+"})
+     */
+    public function bossAction($id) {
+        $em = $this->getDoctrine()->getManager();
+        $employees = $em->getRepository('AbzBundle:Employee')
+            ->findBy(['boss_id' => $id]);
+
+        return $this->render('company/index.html.twig', [
+            'employees' => $employees
+        ]);
     }
 }

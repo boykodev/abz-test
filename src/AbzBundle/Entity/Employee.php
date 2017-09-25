@@ -38,6 +38,46 @@ class Employee
     private $boss_id;
 
     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFullName()
+    {
+        return $this->full_name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPosition()
+    {
+        return $this->position;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSalary()
+    {
+        return $this->salary;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBossId()
+    {
+        return $this->boss_id;
+    }
+
+    /**
      * @param mixed $full_name
      */
     public function setFullName($full_name)
