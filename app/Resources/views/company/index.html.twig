@@ -4,10 +4,10 @@
     <table class="table table-striped">
         <thead>
         <tr>
-            <th>Full Name</th>
-            <th>Position</th>
-            <th>Salary</th>
-            <th>Boss</th>
+            <th>{{ knp_pagination_sortable(employees, 'Full Name', 'full_name') }}</th>
+            <th>{{ knp_pagination_sortable(employees, 'Position', 'position') }}</th>
+            <th>{{ knp_pagination_sortable(employees, 'Salary', 'salary') }}</th>
+            <th>{{ knp_pagination_sortable(employees, 'Boss', 'boss_id') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -25,4 +25,8 @@
             {% endfor %}
         </tbody>
     </table>
+    {# display navigation #}
+    <div class="navigation text-center">
+        {{ knp_pagination_render(employees) }}
+    </div>
 {% endblock %}

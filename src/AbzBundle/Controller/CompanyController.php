@@ -16,6 +16,13 @@ class CompanyController extends Controller
         $em = $this->getDoctrine()->getManager();
         $employees = $em->getRepository('AbzBundle:Employee')->findAll();
 
+        // TODO paginate query, not result
+        $paginator = $this->get('knp_paginator');
+        $employees = $paginator->paginate(
+            $employees,
+            $request->query->getInt('page', 1)
+        );
+
         return $this->render('company/index.html.twig', [
             'employees' => $employees
         ]);
@@ -26,10 +33,17 @@ class CompanyController extends Controller
      *
      * @Route("/boss/{id}", name="boss", requirements={"id": "\d+"})
      */
-    public function bossAction($id) {
+    public function bossAction($id, Request $request) {
         $em = $this->getDoctrine()->getManager();
         $employees = $em->getRepository('AbzBundle:Employee')
             ->findBy(['boss_id' => $id]);
+
+        // TODO paginate query, not result
+        $paginator = $this->get('knp_paginator');
+        $employees = $paginator->paginate(
+            $employees,
+            $request->query->getInt('page', 1)
+        );
 
         return $this->render('company/index.html.twig', [
             'employees' => $employees
