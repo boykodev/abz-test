@@ -13,6 +13,7 @@ class LoadFixtures extends Fixture
         $loader = new NativeLoader();
 
         // fixtures > 1000 generation is very slow, hack to get 50k
+        ini_set('memory_limit','256M');
         for ($i = 1; $i <= 50; $i++) {
             $objectSet = $loader->loadFile(__DIR__.'/fixtures.yml');
 
