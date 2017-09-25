@@ -33,7 +33,39 @@ class Employee
     private $salary;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $boss_id;
+
+    /**
+     * @param mixed $full_name
+     */
+    public function setFullName($full_name)
+    {
+        $this->full_name = $full_name;
+    }
+
+    /**
+     * @param mixed $position
+     */
+    public function setPosition($position)
+    {
+        $this->position = $position;
+    }
+
+    /**
+     * @param mixed $salary
+     */
+    public function setSalary($salary)
+    {
+        $this->salary = $salary;
+    }
+
+    /**
+     * @param mixed $boss_id
+     */
+    public function setBossId($boss_id)
+    {
+        $this->boss_id = $boss_id;
+    }
 }

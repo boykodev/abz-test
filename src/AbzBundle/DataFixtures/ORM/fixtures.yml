@@ -1,0 +1,6 @@
+AbzBundle\Entity\Employee:
+  employee_{1..100}:
+    full_name: <name()>
+    position: <word()>
+    salary: <numberBetween(500, 2000)>
+    boss_id: <numberBetween(1, 100)>
